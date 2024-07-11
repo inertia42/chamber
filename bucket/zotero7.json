@@ -33,7 +33,7 @@
     "post_install": [
         "if (!$bucket) { return }",
         "$scriptsDir = \"$bucketsdir\\$bucket\\scripts\"",
-        "Get-ChildItem \"$scriptsDir\\zotero7\\*.ps1\" | ForEach-Object {",
+        "Get-ChildItem \"$scriptsDir\\zotero\\*.ps1\" | ForEach-Object {",
         "    $content = Get-Content $_",
         "    $content = $content.Replace('REPLACE_HERE', $dir)",
         "    if ($global) { $content = $content.Replace('HKCU', 'HKLM') }",
