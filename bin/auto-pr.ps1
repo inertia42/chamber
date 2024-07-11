@@ -1,6 +1,6 @@
 param(
     # overwrite upstream param
-    [String]$upstream = "inertia42/Chamber:master"
+    [String]$upstream = "inertia42/chamber:master"
 )
 
 if (!$env:SCOOP_HOME) { $env:SCOOP_HOME = Convert-Path (scoop prefix scoop) }
