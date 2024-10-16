@@ -1,0 +1,34 @@
+{
+    "homepage": "https://music.163.com/",
+    "description": "The official NetEase Cloud Music client.",
+    "version": "2.9.10.200061",
+    "license": {
+        "identifier": "EULA",
+        "url": "https://music.163.com/html/web2/service.html"
+    },
+    "url": "https://d1.music.126.net/dmusic/NeteaseCloudMusic_Music_official_2.9.10.200061.exe#/dl.7z",
+    "hash": "cb54a842e1b49fd66edd161d5c0e255fbee236238d2acd8c60991a91355c7e92",
+    "installer": {
+        "script": [
+            "Get-ChildItem \"$dir\\redist_packages\" | Move-Item -Destination \"$dir\" -Force",
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name dorado) scripts/DoradoUtils.psm1)",
+            "Mount-ExternalRuntimeData -Source \"$persist_dir\\appdata\" -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
+            "Remove-Module -Name DoradoUtils"
+        ]
+    },
+    "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\",\"$dir\\redist_packages\" -Force -Recurse",
+    "uninstaller": {
+        "script": [
+            "Import-Module $(Join-Path $(Find-BucketDirectory -Root -Name dorado) scripts/DoradoUtils.psm1)",
+            "Dismount-ExternalRuntimeData -Target \"$env:LOCALAPPDATA\\Netease\\CloudMusic\"",
+            "Remove-Module -Name DoradoUtils"
+        ]
+    },
+    "bin": "cloudmusic.exe",
+    "shortcuts": [
+        [
+            "cloudmusic.exe",
+            "网易云音乐"
+        ]
+    ]
+}
