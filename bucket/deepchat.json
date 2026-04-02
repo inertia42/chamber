@@ -1,0 +1,34 @@
+{
+    "version": "1.0.1",
+    "description": "DeepChat",
+    "homepage": "https://deepchat.thinkinai.xyz/",
+    "license": "Apache-2.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ThinkInAIXYZ/deepchat/releases/download/v1.0.1/DeepChat-1.0.1-windows-x64.exe#/dl.7z",
+            "hash": "00ab348abc2f1b07f7bbcce8d7670559bb4a8e496a6d534c16b0e413571d94f0",
+            "pre_install": [
+                "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+                "Remove-Item \"$dir\\`$*\" -Recurse"
+            ]
+        }
+    },
+    "shortcuts": [
+        [
+            "DeepChat.exe",
+            "DeepChat",
+            "--user-data-dir=\"$dir\\User Data\""
+        ]
+    ],
+    "persist": "User Data",
+    "checkver": {
+        "github": "https://github.com/ThinkInAIXYZ/deepchat"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ThinkInAIXYZ/deepchat/releases/download/v$version/DeepChat-$version-windows-x64.exe#/dl.7z"
+            }
+        }
+    }
+}
